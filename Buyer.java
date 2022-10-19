@@ -1,39 +1,29 @@
-public class Buyer extends Buyer.Person {
+/**
+ * Buyer Class to inherit person class
+ *
+ * @author Nirmit Agrawal, nagraw18@asu.edu
+ * @version 1.0
+ * @since 10-17-2022
+ */
 
+public class Buyer extends Person {
+
+	Buyer() {
+		super(pm);
+	}
+
+	Buyer(ProductMenu pm) {
+		super(pm);
+	}
+
+	@Override
 	public void showMenu() {
 
 	}
 
-	public ProductMenu CreateProductMenu() {
+	@Override
+	public ProductMenu createProductMenu() {
 		return null;
-	}
-
-	public class Person {
-
-		private ProductMenu theProductMenu;
-
-		private ProductMenu productMenu;
-
-		public abstract void showMenu();
-
-		public void showAddButton() {
-
-		}
-
-		public void showViewButton() {
-
-		}
-
-		public void showRadioButton() {
-
-		}
-
-		public void showLabels() {
-
-		}
-
-		public abstract ProductMenu CreateProductMenu();
-
 	}
 
 }
