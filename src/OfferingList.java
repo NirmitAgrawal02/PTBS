@@ -8,25 +8,34 @@
  */
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
+
 public class OfferingList {
-	ArrayList<String> Offer = new ArrayList<>();
-	private Trading trading;
+	ArrayList<String> offer = new ArrayList<>();
 
-	private Offering[] offering;
-
-	private OfferingIterator offeringIterator;
-
-	OfferingList()
-	{
-		Offer.add("");
-		Offer.add("");
-		Offer.add("");
+	OfferingList() {
+		try {
+			Scanner s = new Scanner(new File("C:\\Users\\DELL\\Desktop\\Nirmit\\ASU\\SER 515\\Assignments\\Design Pattern - Individual\\userProduct.txt"));
+			while (s.hasNext()) {
+				this.offer.add(s.next());
+			}
+			s.close();
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
 	}
+
 	@SuppressWarnings("rawtypes")
-	public Iterator createIterator()
-	{
-		return this.Offer.iterator();
+	public Iterator createIterator() {
+		return this.offer.iterator();
+
 	}
 }
+
+
+
+

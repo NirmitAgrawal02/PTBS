@@ -2,8 +2,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.io.File;
-
 import java.util.Scanner;
 
 /**
@@ -21,13 +19,19 @@ public class Offering {
 
 	public void markOffering(String username, String input)
 	{
-		System.out.println("Bidding is in process");
+		System.out.println("Bidding is marked for further negotiations");
 	}
 	public void addContentToFile(String content) throws IOException {
 		String path = "C:\\Users\\DELL\\Desktop\\Nirmit\\ASU\\SER 515\\Assignments\\Design Pattern - Individual\\UserProduct.txt";
 		Files.write(Paths.get(Paths.get(path).toUri()), content.getBytes(), StandardOpenOption.APPEND);
 	}
 	public void viewOffering(String username, String input)
+	{
+		System.out.println("viewOffering");
+		Buyer b = new Buyer();
+		b.showcart(username);
+	}
+	public void addContent(String username, String input)
 	{
 		String content ="\n"+username+":"+input;
 		System.out.println("Bidding has been submitted");

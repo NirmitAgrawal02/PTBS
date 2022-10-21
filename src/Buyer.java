@@ -33,10 +33,7 @@ public class Buyer extends Person {
 		off.submitOffering(username, input);
 	}
 
-	public void removeBidding(String username)
-	{
 
-	}
 	public void startOperation(String username, String Category) {
 
 		Scanner sc = new Scanner(System.in);
@@ -45,7 +42,6 @@ public class Buyer extends Person {
 			System.out.println("1. Show Menu");
 			System.out.println("2. Show cart");
 			System.out.println("3. Add Bidding");
-			System.out.println("4. Remove Bidding");
 			System.out.println("Any other number to exit");
 			int ans = sc.nextInt();
 			switch (ans) {
@@ -58,13 +54,12 @@ public class Buyer extends Person {
 				case 3:
 					submitOffering(username);
 					break;
-				case 4:
-					removeBidding(username);
-					break;
 				default:
-					System.out.println("Terminating");
-					System.exit(-1);
+					System.out.println("Returning");
+					break;
 			}
+			if(ans>3 || ans<1)
+				break;
 		}while(true);
 	}
 	@Override

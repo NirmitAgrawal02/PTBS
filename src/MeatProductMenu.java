@@ -23,6 +23,7 @@ public class MeatProductMenu implements ProductMenu {
 		Product p = new Product();
 		return (p.input(username, "Meat"));
 	}
+
 	@Override
 	public void showAddButton() {
 

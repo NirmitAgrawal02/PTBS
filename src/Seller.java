@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
 public class Seller extends Person{
+	Seller()
+	{
+
+	}
 	Seller(ProductMenu pm)
 	{
 		super(pm);
@@ -8,15 +12,15 @@ public class Seller extends Person{
 	public void showMenu() {
 		this.pm.showMenu();
 	}
-	public void showcart(String username, String Category){
-
-	}
-	public void addItem(String username, String category){
-
-	}
-	public void removeItem(String username, String category)
+	public void showcart(String username)
 	{
 
+		this.pm.showcart(username);
+	}
+	public void addTrading(String username){
+		TradingMenu tm = new TradingMenu();
+		String input = this.pm.input(username);
+		tm.addTrading(username, input);
 	}
 	public void startOperation(String username, String Category)
 	{
@@ -26,7 +30,6 @@ public class Seller extends Person{
 			System.out.println("1. Show Menu");
 			System.out.println("2. Show cart");
 			System.out.println("3. Add an item to sell");
-			System.out.println("4. Remove an item ");
 			System.out.println("Any other number to exit");
 			int ans = sc.nextInt();
 			switch (ans) {
@@ -34,18 +37,17 @@ public class Seller extends Person{
 					showMenu();
 					break;
 				case 2:
-					showcart(username, Category);
+					showcart(username);
 					break;
 				case 3:
-					addItem(username, Category);
-					break;
-				case 4:
-					removeItem(username, Category);
+					addTrading(username);
 					break;
 				default:
-					System.out.println("Terminating");
-					System.exit(-1);
+					System.out.println("Returning");
+					break;
 			}
+			if(ans>3 || ans<1)
+				break;
 		}while(true);
 	}
 	@Override

@@ -14,7 +14,9 @@ public class ReminderVisitor extends NodeVisitor {
 	@Override
 	public Reminder visitProduct(ProductList product) {
 
-		System.out.println("Visiting Product");
+		System.out.println("Seller is selling Beef");
+		System.out.println("Seller is selling Tomato");
+		System.out.println("Seller is selling Onion");
 		return product;
 	}
 	@Override

@@ -3,33 +3,49 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+
 public class ProductIterator extends ListIterator {
-	private ProductList pL;
+	ArrayList<String> prod = new ArrayList<>();
+	int a = 0;
+	int size;
+	ProductIterator()
+	{
+		try {
+			Scanner s = new Scanner(new File("C:\\Users\\DELL\\Desktop\\Nirmit\\ASU\\SER 515\\Assignments\\Design Pattern - Individual\\ProductInfo.txt"));
+			while (s.hasNext()) {
+				prod.add(s.next());
+				this.size++;
+			}
+			s.close();
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	@SuppressWarnings("rawtypes")
-	public boolean hasNext(Iterator iterator)
-	{
-		return iterator.hasNext();
+	public boolean HasNext(Iterator iterator) {
+		this.a = this.a+1;
+		return this.a < this.size;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void MoveToHead(Iterator iterator) {
+		System.out.println("Head Moved..");
 	}
 
 	@SuppressWarnings("rawtypes")
 	public String Next(Iterator iterator) {
 
-		if(this.hasNext(iterator))
-		{
-			return (String) iterator.next();
+			return this.prod.get(a);
+
 		}
-		else
-			return null;
-	}
 
-	public void MoveToHead(Iterator iterator) {
-		System.out.println("Head Moved");
-	}
-
+	@SuppressWarnings("rawtypes")
 	public void Remove(Iterator iterator) {
-		if(this.hasNext(iterator));
-		iterator.next();
+		if (this.HasNext(iterator)) {
+			iterator.next();
+		}
+
 	}
 
 }
