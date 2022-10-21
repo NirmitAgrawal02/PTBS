@@ -1,12 +1,8 @@
 public class TradingMenu {
 
-    public void initiateTrading()
+    public void addTrading()
     {
-        System.out.println("Trading has been initiated");
-    }
-    public void completeTrading()
-    {
-        System.out.println("Trading is completed");
+        System.out.println("Trading has been added");
     }
     public void viewTrading()
     {

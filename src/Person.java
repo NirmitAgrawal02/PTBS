@@ -1,7 +1,11 @@
 public abstract class Person {
-    public static ProductMenu pm;
-    public abstract void showMenu();
+    public  ProductMenu pm;
     public abstract ProductMenu createProductMenu();
+    public abstract void startOperation(String username, String category);
+    Person()
+    {
+
+    }
     @SuppressWarnings("static-access")
     Person(ProductMenu pm)
     {
@@ -18,10 +22,6 @@ public abstract class Person {
     public void showRadio()
     {
         pm.showRadioButton();
-    }
-    public void showCombox()
-    {
-        pm.showComboxes();
     }
     public void showLabels()
     {

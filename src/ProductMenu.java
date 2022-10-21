@@ -3,6 +3,9 @@ public interface ProductMenu {
 
 
 	public abstract void showMenu();
+	public abstract void showcart(String username);
+
+	public abstract String input(String username);
 
 	public abstract void showAddButton();
 
@@ -12,9 +15,7 @@ public interface ProductMenu {
 
 	public abstract void showLabels();
 
-	public abstract void showComboxes();
-
-	public abstract void selectProduct(int UserType);
+	public abstract void selectProduct(int UserType, String username, String category);
 
 	public default void createProductList()
 	{
@@ -27,7 +28,7 @@ public interface ProductMenu {
 	}
 	public default void productOperation()
 	{
-		System.out.println("Operation performed on the course");
+		System.out.println("Operation performed on the produce");
 	}
 
 }

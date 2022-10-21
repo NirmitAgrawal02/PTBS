@@ -8,48 +8,46 @@
 
 public class MeatProductMenu implements ProductMenu {
 
+
 	public void showMenu() {
-
+		Product P = new Product();
+		P.Menu("Meat");
 	}
-
+	public void showcart(String username)
+	{
+		Product p = new Product();
+		p.showcart(username, "Meat");
+	}
+	public String input(String username)
+	{
+		Product p = new Product();
+		return (p.input(username, "Meat"));
+	}
 	@Override
 	public void showAddButton() {
-		System.out.println();
+
+		System.out.println("Add button Showed");
 	}
 	@Override
 	public void showViewButton() {
-		System.out.println();
+		System.out.println("view button Showed");
 
 	}
 	@Override
 	public void showRadioButton() {
-		System.out.println();
+		System.out.println("Radio button Showed");
 
 	}
 	@Override
 	public void showLabels() {
-		System.out.println();
+		System.out.println("Labels Showed");
 
 	}
-	@Override
-	public void showComboxes() {
-		System.out.println();
-
-	}
-	public void selectProduct(int UserType)
+	public void selectProduct(int UserType, String username, String category)
 	{
-		System.out.println("Bridge Pattern for connection used");
 		System.out.println("Meat Products Selected ....");
-		Person person;
-		if(UserType == 0)
-		{
-			person = personFactory.createObject("Buyer");
-		}
-		else
-		{
-			person = personFactory.createObject("Seller");
-		}
-		person.showMenu();
+		BridgePattern b = new BridgePattern();
+		Person person = b.bridge(UserType, category);
 	}
 
 }

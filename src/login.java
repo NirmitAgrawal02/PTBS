@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class login
 {
     int userType;
+    String name = "";
+
     login()
     {
         userType = 0;
@@ -18,11 +20,11 @@ public class login
     public int Login() {
         System.out.println("Enter Username");
         Scanner sc = new Scanner(System.in);
-        String username = sc.nextLine();
+        name = sc.nextLine();
         System.out.println("Enter Password");
         String password = sc.nextLine();
         try {
-            userType = validation(username, password);
+            userType = validation(password);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -33,7 +35,11 @@ public class login
         }
         return userType;
     }
-    public int validation(String username, String password) throws Exception
+    public String userName()
+    {
+        return name;
+    }
+    public int validation(String password) throws Exception
     {
         int val,val2;
         String user , pass;
@@ -47,7 +53,7 @@ public class login
             int index = line.indexOf(":");
             user = line.substring(0,index);
             pass = line.substring(index+1);
-            if(username == user && password == pass)
+            if(name.equals(user) && password.equals(pass))
             {
                 return 0;
             }
@@ -57,7 +63,7 @@ public class login
             int index = line.indexOf(":");
             user = line.substring(0, index);
             pass = line.substring(index + 1);
-            if (username == user && password == pass) {
+            if(name.equals(user) && password.equals(pass)) {
                 return 1;
             }
         }

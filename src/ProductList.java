@@ -1,5 +1,9 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
+
 /**
  * SER-515 Product List Class to implement the iterator pattern
  * @author Nirmit Agrawal, nagraw18@asu.edu
@@ -9,18 +13,14 @@ import java.util.Iterator;
 @SuppressWarnings("rawtypes")
 public class ProductList extends Reminder{
 	ArrayList<String> prod = new ArrayList<>();
+	ArrayList<String> user = new ArrayList<>();
+	ProductList(String username, String productType){
 
-	ProductList()
-	{
-		prod.add("Meat");
-		prod.add("Ham");
-		prod.add("Pav bhaji");
 	}
-
 
 	public Iterator createIterator() {
 
-		return this.prod.iterator();
+		return this.user.iterator();
 	}
 
 	public Reminder accept(NodeVisitor visitor) {

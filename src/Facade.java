@@ -8,11 +8,11 @@
  */
 
 
-import java.util.Iterator;
 import java.util.Scanner;
 public class Facade {
 
 	private int UserType;
+	String username;
 	String theSelectedProduct;
 	private ProductList theProductList;
 	private Buyer thePerson;
@@ -21,64 +21,67 @@ public class Facade {
 	{
 		System.out.println("Facade Pattern Initiated");
 		Scanner sc = new Scanner(System.in);
-		UserType = login(new login());
-		System.out.println("Select from the available Product List \n 1.Meat Product Menu \n 2. Produce Product Menu");
+		login log = new login();
+		UserType = log.Login();
+		username = log.userName();
+		System.out.println("Select from the available Product List \n 1.Meat Product Menu \n 2.Produce Product Menu");
 		theSelectedProduct = sc.nextLine();
 		// Pattern Implemented - Bridge and Factory Method
-		if(theSelectedProduct.equalsIgnoreCase("1.Meat Product Menu")) {
-			SelectProduct(new MeatProductMenu(), UserType);
-		}
-		else if(theSelectedProduct.equalsIgnoreCase("2.Produce Product Menu")) {
-			SelectProduct(new ProduceProductMenu(), UserType);
+		if((theSelectedProduct.equalsIgnoreCase("Meat")) ||(theSelectedProduct.equalsIgnoreCase("Produce") )) {
+			BridgePattern bp = new BridgePattern();
+			Person person = bp.bridge(UserType,theSelectedProduct);
+			person.startOperation(username,theSelectedProduct);
 		}
 		else{
 			System.out.println("Wrong Selection");
 			System.exit(-1);
 		}
-		System.out.println("Implementing Visitor Pattern....");
-		remind();
-		System.out.println("Implementing Iterator pattern ....");
-		ProductList products = new ProductList();
-		@SuppressWarnings("rawtypes")
-		Iterator iterate = (Iterator) products.createIterator();
-		ProductIterator productIterator = new ProductIterator();
-		OfferingList offList = new OfferingList();
-		@SuppressWarnings("rawtypes")
-		Iterator iterate1 = (Iterator) offList.createIterator();
-		OfferingIterator OffIterate = new OfferingIterator();
-		while(productIterator.hasNext(iterate))
-		{
-			System.out.println(productIterator.Next(iterate));
-			System.out.println(OffIterate.Next(iterate1));
-		}
-		sc.close();
-	}
-	public int login(login object) {
-		return object.Login();
+
+
+//		System.out.println("Implementing Visitor Pattern....");
+//		remind();
+//		System.out.println("Implementing Iterator pattern ....");
+//		ProductList products = new ProductList(username, theSelectedProduct);
+//		@SuppressWarnings("rawtypes")
+//		Iterator iterate = (Iterator) products.createIterator();
+//		ProductIterator productIterator = new ProductIterator();
+//		OfferingList offList = new OfferingList();
+//		@SuppressWarnings("rawtypes")
+//		Iterator iterate1 = (Iterator) offList.createIterator();
+//		OfferingIterator OffIterate = new OfferingIterator();
+//		while(productIterator.hasNext(iterate))
+//		{
+//			System.out.println(productIterator.Next(iterate));
+//			System.out.println(OffIterate.Next(iterate1));
+//		}
+//		sc.close();
 	}
 	public void addTrading(TradingMenu TM) {
 
-		TM.initiateTrading();
+		TM.addTrading();
 	}
 	public void viewTrading(TradingMenu TM) {
 		TM.viewTrading();
 	}
 
 	public void markOffering(Offering O) {
-		O.markOffering();
+		String input = "Mutton";
+		O.markOffering(username,input);
 	}
 
 	public void viewOffering(Offering O) {
-		O.viewOffering();
+		String input = "Mutton";
+		O.viewOffering(username,input);
 	}
 
 	public void submitOffering(Offering O) {
-		O.submitOffering();
+		String input = "Mutton";
+		O.submitOffering(username, input);
 	}
 
 	public void remind() {
 		ReminderVisitor remind = new ReminderVisitor();
-		ProductList pl = new ProductList();
+		ProductList pl = new ProductList(username, theSelectedProduct);
 		pl.accept(remind);
 	}
 
@@ -94,8 +97,8 @@ public class Facade {
 		pm.AttachProductToUser();
 	}
 
-	public void SelectProduct(ProductMenu pm, int UserType) {
-		pm.selectProduct(UserType);
+	public void SelectProduct(ProductMenu pm, int UserType, String username, String productType) {
+		pm.selectProduct(UserType, username,productType);
 	}
 
 	public void productOperation(ProductMenu pm) {
